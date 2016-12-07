@@ -1,2 +1,2 @@
-# everlane-sandbox
+# Everlane Sandbox
 >Everything all of the time
