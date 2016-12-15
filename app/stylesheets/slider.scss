@@ -1,0 +1,29 @@
+.slider {
+  background-color: #f8f8f8;
+  overflow: hidden;
+  height: 600px;
+  width: 100%;
+}
+
+.slider__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.slider__slide {
+  height: 500px;
+  width: 500px;
+  min-width: 500px;
+  margin: 0 5%;
+}
+
+.slide__small {
+  width: 300px
+}
+
+.slider__image {
+  height: 100%;
+  width: 100%;
+}
