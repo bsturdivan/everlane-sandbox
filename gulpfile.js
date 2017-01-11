@@ -15,44 +15,37 @@ function onError(error) {
 
 // TASKS
 gulp.task('sass', function() {
-  return gulp.src('./app/stylesheets/**/*.scss')
+  return gulp.src('./app/**/*.scss')
     .pipe(sass())
     .on('error', onError)
-    .pipe(gulp.dest('./public/css'))
+    .pipe(gulp.dest('./public'))
     .pipe(connect.reload())
 });
 
 gulp.task('css', function() {
-  return gulp.src('./app/stylesheets/**/*.css')
-    .pipe(gulp.dest('./public/stylesheets'))
-    .on('error', onError)
-    .pipe(connect.reload())
-});
-
-gulp.task('coffee', function() {
-  return gulp.src('./app/javascript/**/*.coffee')
-    .pipe(coffee())
-    .on('error', onError)
-    .pipe(gulp.dest('./public/javascript'))
-    .pipe(connect.reload())
-});
-
-gulp.task('js', function() {
-  return gulp.src('./app/javascript/**/*.js')
-    .pipe(gulp.dest('./public/javascript'))
-    .on('error', onError)
-    .pipe(connect.reload())
-});
-
-gulp.task('html-layout', function() {
-  return gulp.src('./app/views/layout/**/*.html')
+  return gulp.src('./app/**/*.css')
     .pipe(gulp.dest('./public'))
     .on('error', onError)
     .pipe(connect.reload())
 });
 
-gulp.task('html-pages', function() {
-  return gulp.src('./app/views/pages/**/*.html')
+gulp.task('coffee', function() {
+  return gulp.src('./app/**/*.coffee')
+    .pipe(coffee())
+    .on('error', onError)
+    .pipe(gulp.dest('./public'))
+    .pipe(connect.reload())
+});
+
+gulp.task('js', function() {
+  return gulp.src('./app/**/*.js')
+    .pipe(gulp.dest('./public'))
+    .on('error', onError)
+    .pipe(connect.reload())
+});
+
+gulp.task('html', function() {
+  return gulp.src('./app/**/*.html')
     .pipe(gulp.dest('./public'))
     .on('error', onError)
     .pipe(connect.reload())
@@ -60,12 +53,11 @@ gulp.task('html-pages', function() {
 
 
 gulp.task('watch', function(){
-  gulp.watch('./app/stylesheets/**/*.scss', ['sass']);
-  gulp.watch('./app/stylesheets/**/*.css', ['css']);
-  gulp.watch('./app/javascript/**/*.coffee', ['coffee']);
-  gulp.watch('./app/javascript/**/*.js', ['js']);
-  gulp.watch('./app/views/layout/**/*.html', ['html-layout']);
-  gulp.watch('./app/views/pages/**/*.html', ['html-pages']);
+  gulp.watch('./app/**/*.scss', ['sass']);
+  gulp.watch('./app/**/*.css', ['css']);
+  gulp.watch('./app/**/*.coffee', ['coffee']);
+  gulp.watch('./app/**/*.js', ['js']);
+  gulp.watch('./app/**/*.html', ['html']);
 });
 
 gulp.task('connect', function() {
@@ -75,4 +67,4 @@ gulp.task('connect', function() {
   })
 });
 
-gulp.task('server', ['html-layout', 'html-pages', 'js', 'coffee', 'css', 'sass', 'connect', 'watch']);
+gulp.task('server', ['html', 'js', 'coffee', 'css', 'sass', 'connect', 'watch']);
